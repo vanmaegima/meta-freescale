@@ -32,10 +32,14 @@ do_install() {
     # - bcm4359-pcie
     install -m 0644 cyw-wifi-bt/*_CYW*/brcmfmac4359-pcie* ${D}${nonarch_base_libdir}/firmware/brcm
     install -m 0644 cyw-wifi-bt/*_CYW*/BCM4349B1*.hcd ${D}${sysconfdir}/firmware
+    # - bcm4356-pcie
+    install -m 0644 cyw-wifi-bt/*_CYW*/brcmfmac4356-pcie* ${D}${nonarch_base_libdir}/firmware/brcm
+    install -m 0644 cyw-wifi-bt/*_CYW*/BCM4354A2*.hcd ${D}${sysconfdir}/firmware
 }
 
 PACKAGES =+ " \
     ${PN}-bcm4359-pcie \
+    ${PN}-bcm4356-pcie \
 "
 
 FILES:${PN}-bcm4359-pcie = " \
@@ -43,4 +47,10 @@ FILES:${PN}-bcm4359-pcie = " \
     ${sysconfdir}/firmware/BCM4349B1_*.hcd \
 "
 
+FILES:${PN}-bcm4356-pcie = " \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4356-pcie.* \
+    ${sysconfdir}/firmware/BCM4354A2*.hcd \
+"
+
 RPROVIDES:${PN}-bcm4359-pcie = "linux-firmware-bcm4359-pcie"
+RPROVIDES:${PN}-bcm4356-pcie = "linux-firmware-bcm4356-pcie"
